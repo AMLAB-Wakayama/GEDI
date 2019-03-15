@@ -27,7 +27,7 @@ In this package you will find the following
    (1) The license file (license.txt)
    (2) A MATLAB version of the GEDI/mr-GEDI algorithm (GEDI_OutdcGC.m/mr-GEDI_OutdcGC.m and GEDI.m/mr-GEDI.m).
    (3) A sample script describing how to use wpe.p (test_GEDI.m and test_mrGEDI.m)
-   (4) Please download the package of the dynamic compressive gammachirp filterbank (dcGC-FB) and locate it into “thirdparty” directoly. 
+   (4) Please download the package of the dynamic compressive gammachirp filterbank (dcGC-FB) and locate it into “thirdparty/GCFBv211pack” directoly. 
    (5) Sample data in wav_sample/sample_sp1.wav ~ wav_sample/sample_sp4.wav, and wav_sample/sample_sp_clean.wav
 
 
@@ -35,7 +35,7 @@ For any inquiries, please contact us at gedi-ml@hco.ntt.co.jp
 
 This software and related documentation include the following files,
 |-- thirdparty
-|   `-- EMPTY: Please download “GCFBv211pack” from AMLAB-Wakayama’s GitHub repository (URL: https://github.com/AMLAB-Wakayama/GCFB) and put them into this folder
+|   `-- EMPTY: Please download “GCFBv211pack” from AMLAB-Wakayama’s GitHub repository (URL: https://github.com/AMLAB-Wakayama/GCFB) and put them into this folder like "thirdparty/GCFBv211pack"
 |-- wav_sample
 |   |-- sample_sp_clean.wav
 |   |-- sample_sp1.wav
