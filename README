@@ -1,0 +1,105 @@
+%%
+%% ======================================================================
+%%
+%% README file for GEDI and mr-GEDI tools
+%%
+%% Copyright (c) 2019 Wakayama University and Nippon Telegraph and Telephone corporation (NTT).
+%% All rights reserved.
+%% By Katsuhiko Yamamoto, 15-03-2019
+%% ======================================================================
+%%
+
+The tools and program included in this package are designed and distributed for the evaluation of the intelligibility of enhanced speech processed by nonlinear algorithms. 
+This program can be used only for evaluation purpose. Please refer to the license file for details.
+
+Below is a list of related papers:
+
+	Yamamoto, K., Irino, T., Matsui, T., Araki, S., Kinoshita, K., Nakatani, T. (2017) "Predicting Speech Intelligibility Using a Gammachirp Envelope Distortion Index Based on the Signal-to-Distortion Ratio." Proc. Interspeech 2017, 2949-2953, DOI: 10.21437/Interspeech.2017-170
+
+	Yamamoto, K., Irino, T., Ohashi, N., Araki, S., Kinoshita, K., Nakatani, T. (2018) "Multi-resolution Gammachirp Envelope Distortion Index for Intelligibility Prediction of Noisy Speech." Proc. Interspeech 2018, 1863-1867, DOI: 10.21437/Interspeech.2018-1291
+
+Before starting, please read carefully the license file and the following,
+   - The package includes a MATLAB code version of the GEDI/mr-GEDI algorithm (GEDI_OutdcGC.m/mr-GEDI_OutdcGC.m and GEDI.m/mr-GEDI.m) .
+   - To run MATLAB files, you need the signal processing toolbox.
+   - Note that Wakayama Univ. and NTT may stop releasing this code at any time without prior notice.
+
+In this package you will find the following
+   (1) The license file (license.txt)
+   (2) A MATLAB version of the GEDI/mr-GEDI algorithm (GEDI_OutdcGC.m/mr-GEDI_OutdcGC.m and GEDI.m/mr-GEDI.m).
+   (3) A sample script describing how to use wpe.p (test_GEDI.m and test_mrGEDI.m)
+   (4) Please download the package of the dynamic compressive gammachirp filterbank (dcGC-FB) and locate it into “thirdparty” directoly. 
+   (5) Sample data in wav_sample/sample_sp1.wav ~ wav_sample/sample_sp4.wav, and wav_sample/sample_sp_clean.wav
+
+
+For any inquiries, please contact us at gedi-ml@hco.ntt.co.jp
+
+This software and related documentation include the following files,
+|-- thirdparty
+|   `- EMPTY: Please download “GCFBv211pack” from AMLAB-Wakayama’s GitHub repository (URL: https://github.com/AMLAB-Wakayama/GCFB) and put them into this folder
+|-- wav_sample
+|   |-- sample_sp_clean.wav
+|   |-- sample_sp1.wav
+|   |-- sample_sp2.wav
+|   |-- sample_sp3.wav
+|   `- sample_sp4.wav
+|-- README
+|-- license.txt
+|-- GEDI.m
+|-- GEDI_OutdcGC.m
+|-- test_GEDI.m|
+|-- mrGEDI.m
+|-- mrGEDI_OutdcGC.m
+%%
+%% ======================================================================
+%%
+%% README file for GEDI and mr-GEDI tools
+%%
+%% Copyright (c) 2019 Wakayama University and Nippon Telegraph and Telephone corporation (NTT).
+%% All rights reserved.
+%% By Katsuhiko Yamamoto, 15-03-2019
+%% ======================================================================
+%%
+
+The tools and program included in this package are designed and distributed for the evaluation of the intelligibility of enhanced speech processed by nonlinear algorithms. 
+This program can be used only for evaluation purpose. Please refer to the license file for details.
+
+Below is a list of related papers:
+
+	Yamamoto, K., Irino, T., Matsui, T., Araki, S., Kinoshita, K., Nakatani, T. (2017) "Predicting Speech Intelligibility Using a Gammachirp Envelope Distortion Index Based on the Signal-to-Distortion Ratio." Proc. Interspeech 2017, 2949-2953, DOI: 10.21437/Interspeech.2017-170
+
+	Yamamoto, K., Irino, T., Ohashi, N., Araki, S., Kinoshita, K., Nakatani, T. (2018) "Multi-resolution Gammachirp Envelope Distortion Index for Intelligibility Prediction of Noisy Speech." Proc. Interspeech 2018, 1863-1867, DOI: 10.21437/Interspeech.2018-1291
+
+Before starting, please read carefully the license file and the following,
+   - The package includes a MATLAB code version of the GEDI/mr-GEDI algorithm (GEDI_OutdcGC.m/mr-GEDI_OutdcGC.m and GEDI.m/mr-GEDI.m) .
+   - To run MATLAB files, you need the signal processing toolbox.
+   - Note that Wakayama Univ. and NTT may stop releasing this code at any time without prior notice.
+
+In this package you will find the following
+   (1) The license file (license.txt)
+   (2) A MATLAB version of the GEDI/mr-GEDI algorithm (GEDI_OutdcGC.m/mr-GEDI_OutdcGC.m and GEDI.m/mr-GEDI.m).
+   (3) A sample script describing how to use wpe.p (test_GEDI.m and test_mrGEDI.m)
+   (4) Please download the package of the dynamic compressive gammachirp filterbank (dcGC-FB) and locate it into “thirdparty” directoly. 
+   (5) Sample data in wav_sample/sample_sp1.wav ~ wav_sample/sample_sp4.wav, and wav_sample/sample_sp_clean.wav
+
+
+For any inquiries, please contact us at gedi-ml@hco.ntt.co.jp
+
+This software and related documentation include the following files,
+|-- thirdparty
+|   `- EMPTY: Please download “GCFBv211pack” from AMLAB-Wakayama’s GitHub repository (URL: https://github.com/AMLAB-Wakayama/GCFB) and put them into this folder
+|-- wav_sample
+|   |-- sample_sp_clean.wav
+|   |-- sample_sp1.wav
+|   |-- sample_sp2.wav
+|   |-- sample_sp3.wav
+|   `- sample_sp4.wav
+|-- README
+|-- license.txt
+|-- GEDI.m
+|-- GEDI_OutdcGC.m
+|-- test_GEDI.m|
+|— mrGEDI.m
+|-- mrGEDI_OutdcGC.m
+`— test_mrGEDI.m
+
+
