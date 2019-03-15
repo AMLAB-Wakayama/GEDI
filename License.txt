@@ -30,34 +30,7 @@ In consideration of these premises, and the mutual promises and conditions in th
 EXHIBIT A
 This software and related documentation include the following files,
 |-- thirdparty
-|   `- EMPTY: Please download "GCFBv211pack" from AMLAB-Wakayama’s GitHub repository (URL: https://github.com/AMLAB-Wakayama/GCFB)Professor Toshio Irino’s GitHub repository (URL: https://~) and put them into this folder|-- GCFBv210pack
-
-|   |-- ACFilterBank.m
-|   |-- AsymCmpFrspV2.m
-|   |-- CmprsGCFrsp.m
-|   |-- ERB2Freq.m
-|   |-- Eqlz2MeddisHCLevel.m
-|   |-- EqualFreqScale.m
-|   |-- Fp2toFr1.m
-|   |-- Fpeak2Fr.m
-|   |-- Fr1toFp2.m
-|   |-- Fr2Fpeak.m
-|   |-- Freq2ERB.m
-|   |-- Freq_dcGC.csv
-|   |-- GCFBv210.m
-|   |-- GCFBv210_SetParam.m
-|   |-- GammaChirp.m
-|   |-- GammaChirpFrsp.m
-|   |-- MakeAsymCmpFiltersV2.m
-|   |-- MkCalibTone4AFB.m
-|   |-- OutMidCrct.m
-|   |-- OutMidCrctFilt.m
-|   |-- ReadmeFirst.m
-|   |-- Readme_License.m
-|   |-- Readme_SignalLevel4GCFB.m
-|   |-- TaperWindow.m
-|   |-- testGCFBv210.m
-|   `-- testMdsLevel.m
+|   `- EMPTY: Please download "GCFBv211pack" from AMLAB-Wakayama’s GitHub repository (URL: https://github.com/AMLAB-Wakayama/GCFB) and put them into this folder
 |-- wav_sample
 |   |-- sample_sp_clean.wav
 
@@ -69,8 +42,8 @@ This software and related documentation include the following files,
 |-- license.txt
 |-- GEDI.m
 |-- GEDI_OutdcGC.m
-|-- test_GEDI.m|
--- mrGEDI.m
+|-- test_GEDI.m
+|-- mrGEDI.m
 |-- mrGEDI_OutdcGC.m
 |-- test_mrGEDI.m
 -	GCFBv211pack is a Matlab package of the dynamic compressive gammachirp filterbank. 
