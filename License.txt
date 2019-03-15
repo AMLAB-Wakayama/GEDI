@@ -64,8 +64,7 @@ This software and related documentation include the following files,
 |   |-- sample_sp1.wav
 |   |-- sample_sp2.wav
 |   |-- sample_sp3.wav
-|   `|-- sample_sp4.wav
-|   `-- sample_sp5.wav
+|   `-- sample_sp4.wav
 |-- README
 |-- license.txt
 |-- GEDI.m
