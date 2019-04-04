@@ -46,7 +46,7 @@ This software and related documentation include the following files,
 |-- License.txt
 |-- GEDI.m
 |-- GEDI_OutdcGC.m
-|-- test_GEDI.m|
+|-- test_GEDI.m
 |-— mrGEDI.m
 |-- mrGEDI_OutdcGC.m
 `-— test_mrGEDI.m
