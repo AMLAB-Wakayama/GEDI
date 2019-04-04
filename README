@@ -24,7 +24,7 @@ Before starting, please read carefully the license file and the following,
    - Note that Wakayama Univ. and NTT may stop releasing this code at any time without prior notice.
 
 In this package you will find the following
-   (1) The license file (license.txt)
+   (1) The license file (License.txt)
    (2) A MATLAB version of the GEDI/mr-GEDI algorithm (GEDI_OutdcGC.m/mr-GEDI_OutdcGC.m and GEDI.m/mr-GEDI.m).
    (3) A sample script describing how to use wpe.p (test_GEDI.m and test_mrGEDI.m)
    (4) Please download the package of the dynamic compressive gammachirp filterbank (dcGC-FB) and locate it into “thirdparty/GCFBv211pack” directoly. 
