@@ -51,10 +51,10 @@ SndClean = interp(SndClean,GCparam.fs/fs);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Analyzing by dynamic compressive gammachirp filterbank
 % Test signal (enhanced/unprocessed speech)
-[OutdcGCTest, ~, ~, ~] = GCFBv210(SndTest',GCparam);
+[OutdcGCTest, ~, ~, ~] = GCFBv211(SndTest',GCparam);
 
 % Reference signal (Clean speech; S)
-[OutdcGCClean, ~, ~, ~] = GCFBv210(SndClean',GCparam);
+[OutdcGCClean, ~, ~, ~] = GCFBv211(SndClean',GCparam);
 
 %% Main processing part of GEDI
 [Pcorrect, SDRenvdB, SDRenvsModFB, ParamModFB] = GEDI_OutdcGC(OutdcGCTest, OutdcGCClean, GCparam, Conditions);

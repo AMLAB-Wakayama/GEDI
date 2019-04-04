@@ -56,14 +56,8 @@ SndClean = interp(SndClean,GCparam.fs/fs);
 % Reference signal (Clean speech; S)
 [OutdcGCClean, ~, ~, ~] = GCFBv211(SndClean',GCparam);
 
-%% Main processing part of GEDI
-[Pcorrect, SDRenvdB, SDRenvsModFB, ParamModFB] = mrGEDI_OutdcGC(OutdcGCTest, OutdcGCClean, GCparam, Conditions);
-
-%% Outputs
-Result.Pcorrect      = Pcorrect;        % Percent correct of speech intelligibility
-Result.SDRenvdB      = SDRenvdB;        % SDRenv in dB
-Result.SDRenvsModFB  = SDRenvsModFB;    % SDRenvs in all modulation filter channels
-Result.ParamModFB    = ParamModFB;      % Parameters of modulation filterbank
+%% Main processing part of mr-GEDI
+Result = mrGEDI_OutdcGC(OutdcGCTest, OutdcGCClean, GCparam, Conditions);
 
 end
 

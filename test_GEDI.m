@@ -15,7 +15,7 @@ close all
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Environment settings
 % Root
-DirRoot = [getenv('HOME') '/Desktop/GEDI_Software/'];
+DirRoot = [getenv('HOME') '/Desktop/GEDI/'];
 chdir(DirRoot);
 
 % Sounds
@@ -27,7 +27,7 @@ DirData = [DirRoot 'wav_sample/'];
 DirGCFB = [DirRoot 'thirdparty/GCFBv211pack/'];
 StrPath = path;
 if ~contains(StrPath,'GCFBv211pack/') == 1
-    addpath(genpath(DirGCFB));
+    addpath(genpath(DirRoot));
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -78,7 +78,10 @@ for i = 1:length(ParamSNR)
     SigHalfCosUp    = SigHalfCos(1:LenHalfCos)';
     CompHalfCosFunc = [SigHalfCosUp ones(1,LenSndClean-LenHalfCos*2) fliplr(SigHalfCosUp)];
     SndClean    = SndClean .* CompHalfCosFunc';
-    SndTest     = SndTest  .* CompHalfCosFunc';
+    
+    % Extract a speech segment for sample data
+    TimeSndBefore   = 0.35;
+    SndTest     = SndTest(fs*TimeSndBefore+1:fs*TimeSndBefore+LenSndClean) .* CompHalfCosFunc';
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %% Speech intelligibility prediction by GEDI
