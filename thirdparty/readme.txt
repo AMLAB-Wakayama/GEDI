@@ -1,1 +1,0 @@
-Please download “GCFBv211pack” from AMLAB-Wakayama's GitHub repository (URL: https://github.com/AMLAB-Wakayama/gammachirp-filterbank) and put them into this folder like "thirdparty/GCFBv211pack"
