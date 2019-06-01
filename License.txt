@@ -30,7 +30,7 @@ In consideration of these premises, and the mutual promises and conditions in th
 
 EXHIBIT A
 This software and related documentation include the following files,
-|-- thirdparty
+|-- package
 |   `- EMPTY: Please download "GCFBv211pack" from AMLAB-Wakayama’s GitHub repository (URL: https://github.com/AMLAB-Wakayama/gammachirp-filterbank) and put them into this folder
 |-- wav_sample
 |   |-- sample_sp_clean.wav
