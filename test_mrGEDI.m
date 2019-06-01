@@ -21,9 +21,9 @@ chdir(DirRoot);
 DirData = [DirRoot 'wav_sample/'];
 
 % Package of dynamic compressive gammachirp filterbank
-% Please download the "GCFBv211pack" and put into the "thirdparty" directory 
-%DirGCFB = [DirRoot 'thirdparty/GCFBv210pack/'];
-DirGCFB = [DirRoot 'thirdparty/GCFBv211pack/'];
+% Please download the "GCFBv211pack" and put into the "package" directory 
+%DirGCFB = [DirRoot 'package/GCFBv210pack/'];
+DirGCFB = [DirRoot 'package/GCFBv211pack/'];
 StrPath = path;
 if ~contains(StrPath,'GCFBv211pack/') == 1
     addpath(genpath(DirRoot));
