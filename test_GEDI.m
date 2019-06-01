@@ -39,7 +39,7 @@ GCparam.fs      = 48000;
 
 % Parameter settings for materials
 ParamSNR = [-6 -3 0 3]; %SNR between clean speech and noise
-SPL = 63; % sound pressure level
+SPL = 65; % sound pressure level
 
 % Parameter settings for materials
 fs = 16000;
