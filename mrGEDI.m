@@ -4,7 +4,8 @@
 %   Objective mesure index for speech intelligibility
 %
 %   Yamamoto
-%   Created : 26 Dec. 2018 based on GEDI.m
+%   Created : 26 Dec. 2018; based on GEDI.m
+%   Modified: 01 June 2019; added the GCresp for inputs of mrGEDI_OutdcGC.m
 %
 %   Inputs:
 %       SndTest:  input signal of enhanced/unprocessed noisy speech
@@ -51,13 +52,13 @@ SndClean = interp(SndClean,GCparam.fs/fs);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Analyzing by dynamic compressive gammachirp filterbank
 % Test signal (enhanced/unprocessed speech)
-[OutdcGCTest, ~, ~, ~] = GCFBv211(SndTest',GCparam);
+[OutdcGCTest, ~, ~, GCresp] = GCFBv211(SndTest',GCparam);
 
 % Reference signal (Clean speech; S)
 [OutdcGCClean, ~, ~, ~] = GCFBv211(SndClean',GCparam);
 
 %% Main processing part of mr-GEDI
-Result = mrGEDI_OutdcGC(OutdcGCTest, OutdcGCClean, GCparam, Conditions);
+Result = mrGEDI_OutdcGC(OutdcGCTest, OutdcGCClean, GCparam, GCresp, Conditions);
 
 end
 

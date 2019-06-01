@@ -2,13 +2,14 @@
 %
 %   mrGEDI_OutdcGC
 %   Katsuhiko Yamamoto
-%   Created:  12 Dec 2017; based on GEDI_OutdcGC_v3d
-%   Modified: 07 Feb 2018; renamed mrGEDI_OutdcGC_v1h -> mrGEDI_OutdcGC
-%   Modified: 01 Jul 2018; (v3) limitations for modulation filter outputs
+%   Created:  12 Dec. 2017; based on GEDI_OutdcGC_v3d
+%   Modified: 07 Feb. 2018; renamed mrGEDI_OutdcGC_v1h -> mrGEDI_OutdcGC
+%   Modified: 01 Jul. 2018; limitations for modulation filter outputs
+%             01 June 2019; added an inputs and corrected a weighting function
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function Output = mrGEDI_OutdcGC(OutdcGCMix, OutdcGCClean, GCparam, Conditions)
+function Output = mrGEDI_OutdcGC(OutdcGCMix, OutdcGCClean, GCparam, GCresp, Conditions)
 
 %%%%%%%%%%%%%%%%
 % Define parameters of dcGC filterbank
@@ -16,7 +17,7 @@ if isfield(GCparam,'fs')  == 0, GCparam.fs = 48000; end
 if isfield(GCparam,'NumCh')  == 0, GCparam.NumCh = 100; end
 if isfield(GCparam,'FRange')  == 0, GCparam.FRange = [100, 6000]; end
 if isfield(GCparam,'OutMidCrct')  == 0,  GCparam.OutMidCrct = 'ELC'; end
-if isfield(GCparam, 'Ctrl') == 0,GCparam.Ctrl = 'dynamic'; end;    % Cf: GCparam.Ctrl = 'static'; % or 'fixed
+if isfield(GCparam, 'Ctrl') == 0,GCparam.Ctrl = 'dynamic'; end    % Cf: GCparam.Ctrl = 'static'; % or 'fixed
 [Fr1, ~]  = EqualFreqScale('ERB',GCparam.NumCh,GCparam.FRange);
 GCparam.Fr1 = Fr1;
 
@@ -167,9 +168,9 @@ for nAud = numChAud % 1:GCparam.NumCh
 end % nAud = numChAud
 
 %% Calculate signal-to-distortion ratios of modulation domain, SDRenvs
-% Weighting for auditory filters
+% Weighting for auditory filter channels
 Weight = zeros(numSegWin(end),length(numFcMod),length(numChAud));
-tmpWeight = makeCoefERBwidth_v1c(GCparam.FRange(1),GCparam.FRange(2),length(numChAud),0);
+tmpWeight = makeCoefERBwidth_v2(GCparam, GCresp, 0);
 for nAud = numChAud
     Weight(:,:,nAud) = tmpWeight(nAud);
 end
@@ -316,22 +317,25 @@ end
 end
 
 
-function weight = makeCoefERBwidth_v1c(lowFreq, highFreq, numCh, SwPlot)
+function weight = makeCoefERBwidth_v2(GCparam, GCresp, SwPlot)
 %
 %   Katsuhiko YAMAMOTO
 %   Created:  21 Dec. 2017
-%   Modified: 21 Dec. 2017 (v1b); Add arguments
-%             31 Dec. 2017 (v1c); Correct a numerator value
+%   Modified: 21 Dec. 2017 (v1b); Added arguments
+%             31 Dec. 2017 (v1c); Corrected a numerator value
+%             01 June 2019 (v2);  Corrected a weighting function
 %
 
-freq = linspace(lowFreq, highFreq, numCh);
-[~, ERBwidth] = Freq2ERB(freq);
+if isfield(GCresp,'Fr1')  == 0
+    [~, GCresp] = GCFBv211_SetParam(GCparam);
+end
 
-% Select the nearest channel to 1 kHz
-rmsFreq = sqrt((freq - 1000).^2);
-boolFreq1k = rmsFreq == min(rmsFreq);
+% Convert linear frequency to ERB
+[~, ERBwidth] = Freq2ERB(GCresp.Fr1);
+[~, ERBwidth1kHz] = Freq2ERB(1000);
 
-weight = ERBwidth(boolFreq1k)./ERBwidth;
+% Weighting
+weight = ERBwidth1kHz./ERBwidth;
 
 if SwPlot == 1
     figure
@@ -366,7 +370,7 @@ function [ERBrate, ERBwidth] = Freq2ERB(cf)
 %            For different formulae (years), see Freq2ERBYear.m
 %
 
-if nargin < 1,  help Freq2ERB; end;
+if nargin < 1,  help Freq2ERB; end
 
 ERBrate		= 21.4.*log10(4.37*cf/1000+1);
 ERBwidth	= 24.7.*(4.37*cf/1000 + 1);
@@ -379,7 +383,7 @@ cfmax = 12000;
 if (min(cf) < cfmin | max(cf) > cfmax)
     disp(['Warning : Min or max frequency exceeds the proper ERB range:']);
     disp(['          ' int2str(cfmin) '(Hz) <= Fc <=  ' int2str(cfmax) '(Hz).']);
-end;
+end
 
 end
 
