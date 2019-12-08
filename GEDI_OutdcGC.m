@@ -4,8 +4,10 @@
 %   Main processing part of gammachirp envelope distortion index (GEDI)
 %   using outputs of dynamic compressive gammachirp filterbank (dcGC-FB)
 %
-%   Katsuhiko Yamamoto
+%   Katsuhiko Yamamoto,  Irino, T.
 %   Created:    26 Jan 2018 based on GEDI_OutdcGC_v1a
+%   Modified:    8 Dec 2019  norminv_erf and normcdf_erf are included 
+%                                     to avoid Statistics Toolbox, (Irino, T.)
 %
 %   Inputs:
 %       OutdcGCTest:  output of dcGC-FB (enhanced/unprocessed noisy speech)
@@ -210,9 +212,38 @@ SDRenvdB = 10*log10(SDRenv_lin);
 d_prime = k*(SDRenv_lin).^q;
 
 %----------- Converting from d_prime to Percent correct, Green and Birdsall (1964)----------
-Un = 1*norminv(1-(1/m));
+% Un = 1*norminv(1-(1/m));  % 8 Dec 2019
+Un = 1*norminv_erf(1-(1/m));
 mn = Un + (.577 /Un);% F^(-1)[1/n] Basically gives the value that would be drawn from a normal destribution with probability p = 1/n.
 sig_n=  1.28255/Un;
-Pc_est = normcdf(d_prime,mn,sqrt(sigma_s.^2+sig_n.^2))*100;
-
+% Pc_est = normcdf(d_prime,mn,sqrt(sigma_s.^2+sig_n.^2))*100; % 8 Dec 2019
+Pc_est = normcdf_erf(d_prime,mn,sqrt(sigma_s.^2+sig_n.^2))*100;
 end
+
+
+function ni = norminv_erf(p)
+%
+%  norminv using erf 
+%    Irino, T
+%    Created: 2 Dec 19
+%    Modified: 2 Dec 19
+%
+ni = sqrt(2)*erfinv(2*p-1);
+end
+
+function nc =normcdf_erf(x,mu,sigma)
+%
+%   normcdf using erf 
+%    Irino, T
+%    Created: 2 Dec 19
+%    Modified: 2 Dec 19
+%
+if nargin==1
+    mu=0;
+    sigma=1;
+elseif nargin==2
+    sigma=1;
+end
+nc = (1+erf((x-mu)/(sigma*sqrt(2))))/2;
+end
+
