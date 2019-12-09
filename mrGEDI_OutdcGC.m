@@ -6,7 +6,7 @@
 %   Modified: 07 Feb. 2018; renamed mrGEDI_OutdcGC_v1h -> mrGEDI_OutdcGC
 %   Modified: 01 Jul. 2018; limitations for modulation filter outputs
 %             01 June 2019; added an inputs and corrected a weighting function
-%   Modified: 8 Dec 2019; norminv_erf and normcdf_erf are included to avoid
+%   Modified: 9 Dec 2019; norminv_erf and normcdf_erf are included to avoid
 %                Statistics Toolbox, (Irino, T.)
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -425,28 +425,36 @@ Pcorrect = normcdf_erf(d_prime,mn,sqrt(sigma_s.^2+sig_n.^2))*100;
 end
 
 
-function ni = norminv_erf(p)
+
 %
-%  norminv using erf 
+%    norminv_erf  
+%    Equivalent to norminv in Statistics Toolbox.
 %    Irino, T
 %    Created: 2 Dec 19
 %    Modified: 2 Dec 19
 %
+function ni = norminv_erf(p)
+
 ni = sqrt(2)*erfinv(2*p-1);
+
 end
 
-function nc =normcdf_erf(x,mu,sigma)
-%
-%   normcdf using erf 
+%    normcdf_erf   
+%    Equivalent to normcdf in Statistics Toolbox.
 %    Irino, T
 %    Created: 2 Dec 19
 %    Modified: 2 Dec 19
+%    Modified: 9 Dec 19  % debug
 %
+%
+function nc =normcdf_erf(x,mu,sigma)
+
 if nargin==1
     mu=0;
     sigma=1;
 elseif nargin==2
     sigma=1;
 end
-nc = (1+erf((x-mu)/(sigma*sqrt(2))))/2;
+nc = (1+erf((x-mu)./(sigma*sqrt(2))))./2;
+
 end
