@@ -1,11 +1,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %   mrGEDI_OutdcGC
-%   Katsuhiko Yamamoto
+%   Katsuhiko Yamamoto,  Irino, T.
 %   Created:  12 Dec. 2017; based on GEDI_OutdcGC_v3d
 %   Modified: 07 Feb. 2018; renamed mrGEDI_OutdcGC_v1h -> mrGEDI_OutdcGC
 %   Modified: 01 Jul. 2018; limitations for modulation filter outputs
 %             01 June 2019; added an inputs and corrected a weighting function
+%   Modified: 9 Dec 2019; norminv_erf and normcdf_erf are included to avoid
+%                Statistics Toolbox, (Irino, T.)
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -413,11 +415,46 @@ sigma_s = parameters(4);
 d_prime = k*(SDRenv_lin).^q;
 
 %----------- Converting from d_prime to Percent correct, Green and Birdsall (1964)----------
-Un = 1*norminv(1-(1/m));
+% Un = 1*norminv(1-(1/m));   % 8 Dec 2019
+Un = 1*norminv_erf(1-(1/m));
 mn = Un + (.577 /Un);% F^(-1)[1/n] Basically gives the value that would be drawn from a normal destribution with probability p = 1/n.
 sig_n=  1.28255/Un;
-Pcorrect = normcdf(d_prime,mn,sqrt(sigma_s.^2+sig_n.^2))*100;
+% Pcorrect = normcdf(d_prime,mn,sqrt(sigma_s.^2+sig_n.^2))*100;  % 8 Dec 2019
+Pcorrect = normcdf_erf(d_prime,mn,sqrt(sigma_s.^2+sig_n.^2))*100;
 
 end
 
 
+
+%
+%    norminv_erf  
+%    Equivalent to norminv in Statistics Toolbox.
+%    Irino, T
+%    Created: 2 Dec 19
+%    Modified: 2 Dec 19
+%
+function ni = norminv_erf(p)
+
+ni = sqrt(2)*erfinv(2*p-1);
+
+end
+
+%    normcdf_erf   
+%    Equivalent to normcdf in Statistics Toolbox.
+%    Irino, T
+%    Created: 2 Dec 19
+%    Modified: 2 Dec 19
+%    Modified: 9 Dec 19  % debug
+%
+%
+function nc =normcdf_erf(x,mu,sigma)
+
+if nargin==1
+    mu=0;
+    sigma=1;
+elseif nargin==2
+    sigma=1;
+end
+nc = (1+erf((x-mu)./(sigma*sqrt(2))))./2;
+
+end
