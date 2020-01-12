@@ -46,14 +46,13 @@ This software and related documentation include the following files,
 |-- mrGEDI.m
 |-- mrGEDI_OutdcGC.m
 |-- test_mrGEDI.m
+
 -	GCFBv211pack is a Matlab package of the dynamic compressive gammachirp filterbank. 
--	GEDI.m_is a Matlab code of the gammachirp envelope distortion index (GEDI) that  that calculates a speech intelligibility of the noisy/enhanced speech with GCFBv2110pack and GEDI_OutdcGC.m. 
--	
--	GCFBv210pack is a Matlab package of the dynamic compressive gammachirp filterbank. 
--	GEDI_OutdcGC.m is a Matlab script that calculates a speech intelligibility using outputs of GCFBv210pack. 
--	testTest_GEDI.m is a Matlab script that provides an example of how to use the software GEDI.m.
--	mrGEDI.m_a Matlab code of the multi-resolution gammachirp envelope distortion index (mr-GEDI) that calculates a speech intelligibility of the noisy/enhanced speech with GCFBv211pack and mrGEDI_OutdcGC.m. 
+-	GEDI.m is a Matlab code of the gammachirp envelope distortion index (GEDI) that  that calculates a speech intelligibility of the noisy/enhanced speech with GCFBv211pack and GEDI_OutdcGC.m. 
+-	GEDI_OutdcGC.m is a Matlab script that calculates a speech intelligibility using outputs of GCFBv211pack. 
+-	test_GEDI.m is a Matlab script that provides an example of how to use the software GEDI.m.
+-	mrGEDI.m is a Matlab code of the multi-resolution gammachirp envelope distortion index (mr-GEDI) that calculates a speech intelligibility of the noisy/enhanced speech with GCFBv211pack and mrGEDI_OutdcGC.m. 
 -	mrGEDI_OutdcGC.m is a Matlab script that calculates a speech intelligibility using outputs of GCFBv211pack. 
 -	test_mrGEDI.m is a Matlab script that provides an example of how to use the software mrGEDI.m.
--	Matlab files in the GCFBv210 are setting files needed to run the dcGC-FB. 
+-	Matlab files in the GCFBv211 are setting files needed to run the dcGC-FB. 
 -	The file in wav_sample include samples of noisy speech a clean speech reference and noisy speeches. 
