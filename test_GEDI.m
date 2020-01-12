@@ -37,12 +37,13 @@ GCparam.Ctrl    = 'dynamic';
 GCparam.NumCh   = 100;
 GCparam.fs      = 48000;
 
-% Parameter settings for materials
-ParamSNR = [-6 -3 0 3]; %SNR between clean speech and noise
-SPL = 65; % sound pressure level
-
-% Parameter settings for materials
+% Parameter settings for material conditions
 fs = 16000;
+SPL = 65; % sound pressure level
+ParamSNR = [-6 -3 0 3]; % SNR between clean speech and noise
+TimeSndBefore = 0.35; % onset time of the noisy speech from noise only sound (sec)
+
+% Model parameters
 Conditions = [1.17 0.5 20000 1.62 fs]; % [k q m sigma_s fs]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -80,7 +81,6 @@ for i = 1:length(ParamSNR)
     SndClean    = SndClean .* CompHalfCosFunc';
     
     % Extract a speech segment for sample data
-    TimeSndBefore   = 0.35;
     SndTest     = SndTest(fs*TimeSndBefore+1:fs*TimeSndBefore+LenSndClean) .* CompHalfCosFunc';
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
