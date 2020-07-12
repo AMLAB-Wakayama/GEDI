@@ -9,7 +9,7 @@
 %   Modified:    9 Dec 2019  norminv_erf and normcdf_erf are included 
 %                                     to avoid Statistics Toolbox, (Irino, T.)
 %               12 Jul 2020 add makeCoefERBwidth to calculate with
-%               weighting function of auditory filter channels
+%               weighting function for auditory filter channels
 %
 %   Inputs:
 %       OutdcGCTest:  output of dcGC-FB (enhanced/unprocessed noisy speech)
