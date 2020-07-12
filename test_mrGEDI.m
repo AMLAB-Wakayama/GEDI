@@ -5,6 +5,7 @@
 %
 %   Yamamoto K.,
 %   Created : 26 Dec. 2018 based on test_GEDI
+%   Modified: 12 Jul. 2020 updated parameters
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -43,7 +44,7 @@ ParamSNR = [-6 -3 0 3]; % SNR between clean speech and noise
 TimeSndBefore = 0.35; % onset time of the noisy speech from noise only sound (sec)
 
 % Model parameters
-Conditions = [1.50 0.5 20000 1.64 fs]; % [k q m sigma_s fs]
+Conditions = [1.43 0.5 20000 1.81 fs]; % [k q m sigma_s fs]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Start simulation

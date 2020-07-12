@@ -6,6 +6,7 @@
 %   Yamamoto K.,
 %   Created : 12 Nov. 2018
 %   Modified: 26 Dec. 2018
+%             12 Jul. 2020 updated parameters
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -44,7 +45,7 @@ ParamSNR = [-6 -3 0 3]; % SNR between clean speech and noise
 TimeSndBefore = 0.35; % onset time of the noisy speech from noise only sound (sec)
 
 % Model parameters
-Conditions = [1.17 0.5 20000 1.62 fs]; % [k q m sigma_s fs]
+Conditions = [1.23 0.5 20000 1.83 fs]; % [k q m sigma_s fs]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Start simulation
