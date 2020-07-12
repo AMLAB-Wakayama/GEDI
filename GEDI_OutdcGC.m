@@ -8,6 +8,8 @@
 %   Created:    26 Jan 2018 based on GEDI_OutdcGC_v1a
 %   Modified:    9 Dec 2019  norminv_erf and normcdf_erf are included 
 %                                     to avoid Statistics Toolbox, (Irino, T.)
+%               12 Jul 2020 add makeCoefERBwidth to calculate with
+%               weighting function of auditory filter channels
 %
 %   Inputs:
 %       OutdcGCTest:  output of dcGC-FB (enhanced/unprocessed noisy speech)
@@ -78,6 +80,13 @@ for nCh = nChCal % 1:GCparam.NumCh
     
 end
 
+%% Calculate signal-to-distortion ratios of modulation domain, SDRenvs
+% Weighting for auditory filters
+Weight = zeros(length(mod_Chs),length(nChCal));
+tmpWeight = makeCoefERBwidth_v2(GCparam, GCresp, 0);
+for nMod = 1:length(mod_Chs) 
+    Weight(nMod,:) = tmpWeight;
+end
 
 %% Calculate signal-to-distortion ratios of modulation domain, SDRenvs
 % Initialization
@@ -87,9 +96,9 @@ SumPenvsDist  = zeros(7,1);
 
 % Sum all outputs from each auditory filter in each modulation filters
 for iModCh = 1:7
-    SumPenvsClean(iModCh,1) = sum(PenvsClean(iModCh,:));
-    SumPenvsTest(iModCh,1) = sum(PenvsTest(iModCh,:));
-    SumPenvsDist(iModCh,1) = sum(PenvsDist(iModCh,:));
+    SumPenvsClean(iModCh,1) = sum(PenvsClean(iModCh,:).*Weight(iModCh,:));
+    SumPenvsTest(iModCh,1)   = sum(PenvsTest(iModCh,:).*Weight(iModCh,:));
+    SumPenvsDist(iModCh,1)  = sum(PenvsDist(iModCh,:).*Weight(iModCh,:));
 end
 
 % SDRenvs in all modulation filter channels
@@ -194,6 +203,76 @@ for k = 1:size(WeightModFilter,1)
 end
 
 FcsModBPF = [1 FcsModBPF];
+
+end
+
+function weight = makeCoefERBwidth_v2(GCparam, GCresp, SwPlot)
+%
+%   Katsuhiko YAMAMOTO
+%   Created:  21 Dec. 2017
+%   Modified: 21 Dec. 2017 (v1b); Added arguments
+%             31 Dec. 2017 (v1c); Corrected a numerator value
+%             01 June 2019 (v2);  Corrected a weighting function
+%
+
+if isfield(GCresp,'Fr1')  == 0
+    [~, GCresp] = GCFBv211_SetParam(GCparam);
+end
+
+% Convert linear frequency to ERB
+[~, ERBwidth] = Freq2ERB(GCresp.Fr1);
+[~, ERBwidth1kHz] = Freq2ERB(1000);
+
+% Weighting
+weight = ERBwidth1kHz./ERBwidth;
+
+if SwPlot == 1
+    figure
+    %plot(1:100,weight);
+    plot(1:100,weight./max(weight));
+    % In this plot, weight coefficients are normalized by the maximum value
+    % but SumPenv***s don't change
+    xlabel('Channel of dcGC filterbank');
+    ylabel('Coefficient')
+    legend({...
+        '$\frac{\textrm{ERBwidth(1000 [Hz])}}{\textrm{ERBwidth(f [Hz])}}$'},...
+        'interpreter','latex','fontsize',20);
+end
+
+end
+
+
+function [ERBrate, ERBwidth] = Freq2ERB(cf)
+%
+%	Frequency -> ERB_N-rate and ERB_N-Bandwidth (Glasberg and Moore, 1990)
+%	Toshio IRINO
+%	11 Mar. 1998
+%       Nodified: 26 Jul 2004 (no warning)
+%       Nodified: 17 Nov 2006 (modified the comments only. ERB-> ERB_N)
+%
+%	function [ERBrate, ERBwidth] = Freq2ERB(cf),
+%	INPUT	cf:       Center frequency
+%	OUTPUT  ERBrate:  ERB_N rate
+%		ERBwidth: ERB_N Bandwidth
+%
+%	Ref: Glasberg and Moore: Hearing Research, 47 (1990), 103-138
+%            For different formulae (years), see Freq2ERBYear.m
+%
+
+if nargin < 1,  help Freq2ERB; end
+
+ERBrate		= 21.4.*log10(4.37*cf/1000+1);
+ERBwidth	= 24.7.*(4.37*cf/1000 + 1);
+
+return % no warning
+
+%%% Warning for Freq. Range %%%
+cfmin = 50;
+cfmax = 12000;
+if (min(cf) < cfmin | max(cf) > cfmax)
+    disp(['Warning : Min or max frequency exceeds the proper ERB range:']);
+    disp(['          ' int2str(cfmin) '(Hz) <= Fc <=  ' int2str(cfmax) '(Hz).']);
+end
 
 end
 
