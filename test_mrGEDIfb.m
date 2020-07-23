@@ -12,7 +12,7 @@
 %   Note (24 Jul 2020 by IT): 
 %     This mrGEDIfb is an initial version for fast processing. 
 %     The results derived by the original mrGEDI and the mrGEDIfb were
-%     not exactly the same but were very similar in the preliminary tests
+%     very similar but not exactly the same in the preliminary tests
 %     at a moderate SPL.  Please use this carefully for your purpose.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
