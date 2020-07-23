@@ -53,7 +53,7 @@ This software and related documentation include the following files,
 |-— mrGEDI.m       (original mrGEDI)
 |-- mrGEDI_OutdcGC.m
 |-— test_mrGEDI.m
-|-— mrGEDIfb.m     (frame-based mrGEDI)
+|-— mrGEDIfb.m     (fast, frame-based mrGEDI)
 |-- GEDI_OutdcGCfb.m
 `-— test_mrGEDIfb.m
 
