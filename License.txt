@@ -31,7 +31,7 @@ In consideration of these premises, and the mutual promises and conditions in th
 EXHIBIT A
 This software and related documentation include the following files,
 |-- package
-|   `- EMPTY: Please download "GCFBv211pack" from AMLAB-Wakayama’s GitHub repository (URL: https://github.com/AMLAB-Wakayama/gammachirp-filterbank) and put them into this folder
+|   `- EMPTY: Please download "GCFBv211pack" and/or "GCFBv221pack" from AMLAB-Wakayama’s GitHub repository (URL: https://github.com/AMLAB-Wakayama/gammachirp-filterbank) and put them into this directory.
 |-- wav_sample
 |   |-- sample_sp_clean.wav
 |   |-- sample_sp1.wav
@@ -40,19 +40,20 @@ This software and related documentation include the following files,
 |   `-- sample_sp4.wav
 |-- README
 |-- License.txt
-|-- GEDI.m
+|-- GEDI.m         (original GEDI)
 |-- GEDI_OutdcGC.m
 |-- test_GEDI.m
-|-- mrGEDI.m
+|-- mrGEDI.m      (original mrGEDI)
 |-- mrGEDI_OutdcGC.m
 |-- test_mrGEDI.m
+|-— mrGEDIfb.m    (frame-based mrGEDI)
+|-- GEDI_OutdcGCfb.m
+`-— test_mrGEDIfb.m
 
--	GCFBv211pack is a Matlab package of the dynamic compressive gammachirp filterbank. 
--	GEDI.m is a Matlab code of the gammachirp envelope distortion index (GEDI) that  that calculates a speech intelligibility of the noisy/enhanced speech with GCFBv211pack and GEDI_OutdcGC.m. 
--	GEDI_OutdcGC.m is a Matlab script that calculates a speech intelligibility using outputs of GCFBv211pack. 
--	test_GEDI.m is a Matlab script that provides an example of how to use the software GEDI.m.
--	mrGEDI.m is a Matlab code of the multi-resolution gammachirp envelope distortion index (mr-GEDI) that calculates a speech intelligibility of the noisy/enhanced speech with GCFBv211pack and mrGEDI_OutdcGC.m. 
--	mrGEDI_OutdcGC.m is a Matlab script that calculates a speech intelligibility using outputs of GCFBv211pack. 
--	test_mrGEDI.m is a Matlab script that provides an example of how to use the software mrGEDI.m.
--	Matlab files in the GCFBv211 are setting files needed to run the dcGC-FB. 
--	The file in wav_sample include samples of noisy speech a clean speech reference and noisy speeches. 
+-	GCFBv211pack and GCFBv221pack are Matlab packages of the dynamic compressive gammachirp filterbank. 
+-	test_GEDI.m, GEDI.m, and GEDI_OutdcGC.m are Matlab codes for the gammachirp envelope distortion index (GEDI). These calculate speech intelligibility of noisy/enhanced speech sounds. GCFBv211pack is necessary. Execute test_GEDI.m first to learn the codes.
+-	test_mrGEDI.m, mrGEDI.m, and mrGEDI_OutdcGC.m are Matlab codes for the "multi-resolution" gammachirp envelope distortion index (mrGEDI). These calculate speech intelligibility of noisy/enhanced speech sounds. GCFBv211pack is necessary. Execute test_mrGEDI.m first to learn the codes.
+-	test_mrGEDIfb.m, mrGEDIfb.m, and mrGEDI_OutdcGCfb.m are Matlab codes for frame-based mrGEDI. These calculate speech intelligibility of noisy/enhanced speech sounds sufficiently fast. GCFBv221pack is necessary. Execute test_mrGEDIfb.m first to learn the codes.
+-	The files in wav_sample are example sound files of noisy speech a clean speech reference and noisy speeches. 
+
+

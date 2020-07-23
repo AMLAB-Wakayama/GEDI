@@ -3,9 +3,10 @@
 %%
 %% README file for GEDI and mr-GEDI tools
 %%
-%% Copyright (c) 2019 Wakayama University and Nippon Telegraph and Telephone corporation (NTT).
+%% Copyright (c) 2019-2020 Wakayama University and Nippon Telegraph and Telephone corporation (NTT).
 %% All rights reserved.
 %% By Katsuhiko Yamamoto, 15-03-2019
+%% Mod by Irino, T., 23-07-2020
 %% ======================================================================
 %%
 
@@ -27,9 +28,9 @@ Before starting, please read carefully the license file and the following,
 
 In this package you will find the following
    (1) The license file (License.txt)
-   (2) A MATLAB version of the GEDI/mr-GEDI algorithm (GEDI_OutdcGC.m/mr-GEDI_OutdcGC.m and GEDI.m/mr-GEDI.m).
-   (3) A sample script describing how to use  (test_GEDI.m and test_mrGEDI.m)
-   (4) Please download the package of the dynamic compressive gammachirp filterbank (dcGC-FB) and locate it into “package/GCFBv211pack” directory. 
+   (2) A MATLAB version of the GEDI/mr-GEDI algorithms (GEDI.m, mrGEDI.m, GEDI_OutdcGC.m, and mrGEDI_OutdcGC.m) and the frame-based version (mrGEDIfb.m and mrGEDI_OutdcGCfb.m)
+   (3) A sample script describing how to use  (test_GEDI.m, test_mrGEDI.m, and test_mrGEDIfb.m)
+   (4) Please download the package of the dynamic compressive gammachirp filterbank (dcGC-FB) and put it under "package/" directory. "package/GCFBv211pack/"  is for original GEDI/mrGEDI. "package/GCFBv221pack/"  is for mrGEDIfb.
    (5) Sample data in wav_sample/sample_sp1.wav ~ wav_sample/sample_sp4.wav, and wav_sample/sample_sp_clean.wav
 
 
@@ -37,7 +38,7 @@ For any inquiries, please contact us at gedi-ml@hco.ntt.co.jp
 
 This software and related documentation include the following files,
 |-- package
-|   `-- EMPTY: Please download “GCFBv211pack” from AMLAB-Wakayama’s GitHub repository (URL: https://github.com/AMLAB-Wakayama/gammachirp-filterbank) and put them into this folder like "package/GCFBv211pack"
+|   `-- EMPTY: Please download "GCFBv211pack" and/or "GCFBv221pack" from AMLAB-Wakayama’s GitHub repository (URL: https://github.com/AMLAB-Wakayama/gammachirp-filterbank) and put them into this directory.
 |-- wav_sample
 |   |-- sample_sp_clean.wav
 |   |-- sample_sp1.wav
@@ -46,11 +47,21 @@ This software and related documentation include the following files,
 |   `-- sample_sp4.wav
 |-- README
 |-- License.txt
-|-- GEDI.m
+|-- GEDI.m          (original GEDI)
 |-- GEDI_OutdcGC.m
 |-- test_GEDI.m
-|-— mrGEDI.m
+|-— mrGEDI.m       (original mrGEDI)
 |-- mrGEDI_OutdcGC.m
-`-— test_mrGEDI.m
+|-— test_mrGEDI.m
+|-— mrGEDIfb.m     (frame-based mrGEDI)
+|-- GEDI_OutdcGCfb.m
+`-— test_mrGEDIfb.m
+
+
+-	GCFBv211pack and GCFBv221pack are Matlab packages of the dynamic compressive gammachirp filterbank. 
+-	test_GEDI.m, GEDI.m, and GEDI_OutdcGC.m are Matlab codes for the gammachirp envelope distortion index (GEDI). These calculate speech intelligibility of noisy/enhanced speech sounds. GCFBv211pack is necessary. Execute test_GEDI.m first to learn the codes.
+-	test_mrGEDI.m, mrGEDI.m, and mrGEDI_OutdcGC.m are Matlab codes for the "multi-resolution" gammachirp envelope distortion index (mrGEDI). These calculate speech intelligibility of noisy/enhanced speech sounds. GCFBv211pack is necessary. Execute test_mrGEDI.m first to learn the codes.
+-	test_mrGEDIfb.m, mrGEDIfb.m, and mrGEDI_OutdcGCfb.m are Matlab codes for frame-based mrGEDI. These calculate speech intelligibility of noisy/enhanced speech sounds sufficiently fast. GCFBv221pack is necessary. Execute test_mrGEDIfb.m first to learn the codes.
+-	The files in wav_sample are example sound files of noisy speech a clean speech reference and noisy speeches. 
 
 
