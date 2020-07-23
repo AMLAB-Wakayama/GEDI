@@ -7,13 +7,13 @@
 %   Created : 16 May 2020   IT, based on test_mrGEDI (KY)
 %   Modified: 16 May 2020   IT, introduction of Frame-base cGCFB -->  mrGEDI_OutdcGCfb (IT)
 %   Modified: 21 May 2020   IT, using GCFBv221pack
+%   Modified: 24 May 2020   IT, adding note
 %
-%   Note (23 Jul 2020 by IT): 
-%     This mrGEDIfb is a beta version for fast processing. 
+%   Note (24 Jul 2020 by IT): 
+%     This mrGEDIfb is an initial version for fast processing. 
 %     The results derived by the original mrGEDI and the mrGEDIfb were
-%     very similar in the preliminary tests (no published data). 
-%     It may be because it was tested at a moderate SPL.
-%     Please use this carefully.
+%     not exactly the same but were very similar in the preliminary tests
+%     at a moderate SPL.  Please use this carefully for your purpose.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
