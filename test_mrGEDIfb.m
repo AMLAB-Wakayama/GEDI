@@ -8,12 +8,16 @@
 %   Modified: 16 May 2020   IT, introduction of Frame-base cGCFB -->  mrGEDI_OutdcGCfb (IT)
 %   Modified: 21 May 2020   IT, using GCFBv221pack
 %   Modified: 24 May 2020   IT, adding note
+%   Modified: 26 May 2020   IT, debug
 %
-%   Note (24 Jul 2020 by IT): 
+%   Note (24 & 26 Jul 2020 by IT): 
 %     This mrGEDIfb is an initial version for fast processing. 
 %     The results derived by the original mrGEDI and the mrGEDIfb were
 %     very similar but not exactly the same in the preliminary tests
-%     at a moderate SPL.  Please use this carefully for your purpose.
+%     at a moderate SPL.  The parallel shift of percent correct line can be
+%     easily compensated by the parameters of the ideal observer.
+%     Please use this carefully for your purpose.
+%
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -23,7 +27,7 @@ close all
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Environment settings
 % Root
-DirRoot = [getenv('HOME') '/Desktop/GEDIfb/'];
+DirRoot = [getenv('HOME') '/Desktop/GEDI/'];
 try
     chdir(DirRoot);
 catch
