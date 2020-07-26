@@ -127,7 +127,7 @@ ylim([-0.5+0 100+0.5]);
 xlabel('SNR (dB)');
 ylabel('Percent correct (%)')
 legend('Unprocessed')
-title('Examples of mr-GEDI');
+title('Results of frame-based mr-GEDI for example sounds');
 grid on;
 
 % Keep results for comparison    20 May 20
