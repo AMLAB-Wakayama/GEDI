@@ -9,6 +9,7 @@
 %   Modified: 21 May 2020   IT, using GCFBv221pack
 %   Modified: 24 May 2020   IT, adding note
 %   Modified: 26 May 2020   IT, debug
+%   Modified: 29 Aug 2020   IT, mrGEDI_OutdcGCfb --> mrGEDIfb_OutdcGC
 %
 %   Note (24 & 26 Jul 2020 by IT): 
 %     This mrGEDIfb is an initial version for fast processing. 

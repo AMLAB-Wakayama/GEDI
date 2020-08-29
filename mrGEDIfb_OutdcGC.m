@@ -6,11 +6,13 @@
 %   Modified: 16 May 2020   introduction of Frame-base cGCFB -->  mrGEDI_OutdcGCfb (IT)
 %   Modified: 21 May 2020   IT, using GCFBv221pack
 %   Modified: 25 Jun 2020   IT, To avoid zero division
+%   Modified: 25 Aug 2020   IT, Output.SNRenv
+%   Modified: 29 Aug 2020   IT, mrGEDI_OutdcGCfb --> mrGEDIfb_OutdcGC
 %   
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function Output = mrGEDI_OutdcGC(OutdcGCMix, OutdcGCClean, GCparam, GCresp, Conditions)
+function Output = mrGEDIfb_OutdcGC(OutdcGCMix, OutdcGCClean, GCparam, GCresp, Conditions)
 
 %%%%%%%%%%%%%%%%
 % Define parameters of dcGC filterbank
@@ -220,6 +222,7 @@ Pcorrect = IdealObserver_v1(SDRenv,Conditions);
 %% Save information
 Output.Pcorrect = Pcorrect;
 Output.SDRenvdB = SDRenvdB;
+Output.SDRenv   = SDRenv;   % Added by IT 25 Aug 2020
 
 % Parameter of modulation filterbank (ModFB)
 Output.mod_fcs = numFcMod;
