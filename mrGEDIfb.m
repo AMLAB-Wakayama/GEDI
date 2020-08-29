@@ -10,6 +10,7 @@
 %   Modified: 20 May 2020   IT, debug
 %   Modified: 21 May 2020   IT, using GCFBv221pack
 %   Modified: 25 Jun 2020   IT, modified around interp
+%   Modified: 29 Aug 2020   IT, mrGEDI_OutdcGCfb --> mrGEDIfb_OutdcGC
 %
 %   Inputs:
 %       SndTest:  input signal of enhanced/unprocessed noisy speech
@@ -30,7 +31,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function Result = mrGEDI(SndTest, SndClean, GCparam, Conditions, SPL)
+function Result = mrGEDIfb(SndTest, SndClean, GCparam, Conditions, SPL)
 
 %% Default parameters of dcGC filterbank
 if isfield(GCparam,'fs')  == 0, GCparam.fs = 48000; end
@@ -66,7 +67,7 @@ end;
 [OutdcGCClean, ~, ~, ~]         = GCFBv221(SndClean',GCparam);
 
 %% Main processing part of mr-GEDI
-Result = mrGEDI_OutdcGCfb(OutdcGCTest, OutdcGCClean, GCparam, GCresp, Conditions);
+Result = mrGEDIfb_OutdcGC(OutdcGCTest, OutdcGCClean, GCparam, GCresp, Conditions);
 
 end
 
