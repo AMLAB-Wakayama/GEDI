@@ -11,6 +11,7 @@
 %   Modified: 21 May 2020   IT, using GCFBv221pack
 %   Modified: 25 Jun 2020   IT, modified around interp
 %   Modified: 29 Aug 2020   IT, mrGEDI_OutdcGCfb --> mrGEDIfb_OutdcGC
+%   Modified: 22 Sep 2021   IT, debug SndTest' --> SndTest(:)', SndClean' --> SndClean(:)', 
 %
 %   Inputs:
 %       SndTest:  input signal of enhanced/unprocessed noisy speech
@@ -61,10 +62,10 @@ end;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Analyzing by dynamic compressive gammachirp filterbank
 % Test signal (enhanced/unprocessed speech)
-[OutdcGCTest, ~, GCparam, GCresp] = GCFBv221(SndTest',GCparam);  % you need get GCparam
+[OutdcGCTest, ~, GCparam, GCresp] = GCFBv221(SndTest(:)',GCparam);  % you need get GCparam
 
 % Reference signal (Clean speech; S)
-[OutdcGCClean, ~, ~, ~]         = GCFBv221(SndClean',GCparam);
+[OutdcGCClean, ~, ~, ~]         = GCFBv221(SndClean(:)',GCparam);
 
 %% Main processing part of mr-GEDI
 Result = mrGEDIfb_OutdcGC(OutdcGCTest, OutdcGCClean, GCparam, GCresp, Conditions);
