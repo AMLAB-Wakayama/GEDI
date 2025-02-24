@@ -133,7 +133,7 @@ grid on;
 
 % Keep results for comparison    20 May 20
 if 0
-    NameRslt = 'Rslt1';
+    NameRslt = 'Rslt_mrGEDIfb';
     save([NameRslt '_Val'])
     print([NameRslt '_Fig'],'-depsc')
-end;
+end
